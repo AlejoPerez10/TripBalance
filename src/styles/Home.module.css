@@ -1,0 +1,180 @@
+/*Estilos personalizados*/
+
+/*Estilo para los botones tipo laser*/
+.laserButton {
+  position: relative;
+  padding: 15px 90px;
+  font-family: nunito,sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.laserButton::before,
+.laserButton::after {
+  content: '';
+  position: absolute;
+  height: 2px;
+  width: 0;
+  background-color: #ffd05a;
+  transition: width 0.4s ease-in-out, left 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+  box-shadow: 0 0 8px rgba(255, 208, 90, 0.8), 0 0 12px rgba(255, 208, 90, 0.5);
+}
+
+.laserButton::before {
+  top: 0;
+  left: 50%;
+}
+
+.laserButton::after {
+  bottom: 0;
+  left: 50%;
+}
+
+.laserButton:hover::before,
+.laserButton:hover::after {
+  width: 100%;
+  left: 0;
+  box-shadow: 0 0 15px rgba(255, 208, 90, 1), 0 0 20px rgba(255, 208, 90, 0.8);
+}
+/*Estilo para los botones tipo láser*/
+
+.linkStyle:hover{
+  border-bottom: 1px solid #ffd05a;
+}
+
+.activeButtonsNav:hover{
+  background-color: #4c4c4c !important;
+  color: #ffd05a;
+}
+
+.activeButtonsNav:active{
+  transform:scale(98%);
+}
+
+.hidden{
+  display: none;
+}
+
+.show{
+  display: flex;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.pointer:active{
+  transform:scale(98%);
+}
+
+.centerText {
+  font-size: 20px; /* Tamaño base para pantallas pequeñas */
+
+  /*Pantallas pequeñas*/
+  @media (min-width: 500px){
+    font-size:30px
+  }
+
+  /* En pantallas medianas */
+  @media (min-width: 768px) {
+    font-size: 40px;
+  }
+
+  /* En pantallas grandes */
+  @media (min-width: 992px) {
+    font-size: 60px;
+  }
+
+  /*Pantallas muy grandes*/
+  @media (min-width: 3500px){
+    font-size:100px
+  }
+}
+
+.formW{
+  width:75% ;
+
+  @media (min-width:768px){
+    width:50%;
+  }
+}
+
+.aExpensesTripDetails{
+  width: 35%;
+}
+
+@media (max-width: 1199px) {
+  .expensesTripDetails {
+      flex-direction: column;
+  }
+
+  .aExpensesTripDetails {
+      width: 50%;
+  }
+}
+
+@media (max-width: 767px){
+  .aExpensesTripDetails{
+    width: 95%;
+  }
+}
+
+@media (max-width: 350px) {
+  .aExpensesTripDetails {
+      width: 118%;
+  }
+}
+
+.tripsResponsive{
+  width: 50%
+}
+
+.tripsResponsive:hover{
+  color:#ffd05a;
+}
+
+@media (max-width: 991px){
+  .tripsResponsive{
+    width: 80%;
+  }
+}
+
+.buttonsExpenseDetails{
+  padding: 1% 10%;
+  font-size: 100%;
+}
+
+.imgExpensesDetails{
+  width: 12%;
+}
+
+.textImgExpensesDetails{
+  font-size: 40px;
+}
+
+@media (max-width: 767px){
+  .buttonsExpensesDetails{
+    padding: 1% 5%;
+    font-size: 20px;
+  }
+
+  .imgExpensesDetails{
+    width: 20%;
+  }
+
+  .textImgExpensesDetails{
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 2300px){
+  .imgExpensesDetails{
+    width: 5%;
+  }
+}

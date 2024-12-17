@@ -1,0 +1,10 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+body{
+    background-color: #3c3c3c;
+    font-family: nunito, sans-serif;
+}
+
+input::placeholder{
+    color:#ffffff;
+};
