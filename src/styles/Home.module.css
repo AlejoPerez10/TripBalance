@@ -191,3 +191,15 @@
     width: 5%;
   }
 }
+
+@media (min-width: 575px){
+  .logoFooter{
+    width: 30% !important;
+  }
+}
+
+@media (min-width: 1100px){
+  .logoFooter{
+    width: 20% !important;
+  }
+}
