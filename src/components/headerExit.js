@@ -1,4 +1,6 @@
 import React from 'react'
+import Logout from'@/icons/logout.svg'
+import Link from 'next/link'
 
 const HeaderExit = () => {
 
@@ -14,13 +16,9 @@ const HeaderExit = () => {
                     />
                 </div>
                 <div className="col-3 col-sm-2 d-flex justify-content-end">
-                    <a href="/" className="w-75 d-flex justify-content-center">
-                        <img
-                            className="img-fluid w-25 w-sm-25"
-                            src="../img/logout.svg"
-                            alt="logout"
-                        />
-                    </a>
+                    <Link href="/" className="w-75 d-flex justify-content-center">
+                        <Logout className='w-50 md:w-25'/>
+                    </Link>
                 </div>
             </div>
         </header>

@@ -4,6 +4,10 @@ import CenterText from "@/components/centerText";
 import TravelsTripList from "@/components/travelsTripList";
 import Form from '@/components/form';
 import React, { useState, useEffect } from 'react';
+import Agend from '@/icons/agend.svg'
+import NewTrip from '@/icons/newTrip.svg'
+import JoinTrip from '@/icons/joinTrip.svg'
+import AirplaneTicket from '@/icons/airplaneTicket.svg'
 
 const inputsNewTrip = [
     {
@@ -52,7 +56,7 @@ const codigoRandom = () => {
     return code;
 };
 
-export default function tripListPage() {
+export default function TripListPage() {
     const [trips, setTrips] = useState([]);
     const [activeComponent, setActiveComponent] = useState('myTrips');
     const [message, setMessage] = useState('');
@@ -221,14 +225,18 @@ export default function tripListPage() {
             </Head>
 
             <div className="container-fluid d-flex flex-column flex-sm-row justify-content-center align-items-center gap-4">
-                <ButtonsNav name='My Trips' src='/img/agend.svg' onClick={() => handleButtonClick('myTrips')} />
-                <ButtonsNav name='New Trip' src='/img/newTrip.svg' onClick={() => handleButtonClick('newTrip')} />
-                <ButtonsNav name='Join a Trip' src='/img/joinTrip.svg' onClick={() => handleButtonClick('joinTrip')} />
+                <ButtonsNav name='My Trips' icon=<Agend style={{width:'80px'}}/> onClick={() => handleButtonClick('myTrips')} />
+                <ButtonsNav name='New Trip' icon=<NewTrip style={{width:'80px'}}/> onClick={() => handleButtonClick('newTrip')} />
+                <ButtonsNav name='Join Trip' icon=<JoinTrip style={{width:'80px'}}/> onClick={() => handleButtonClick('joinTrip')} />
             </div>
 
             {message &&
                 <div className='position-absolute w-100 d-flex justify-content-center mb-0'>
-                    <p className="w-50 text-center alert" style={{ marginTop: '21px', backgroundColor: '#4b3f00', color: 'white', boxShadow: '0 0 20px black' }}>{message}</p>
+                    <p className="w-50 text-center alert"
+                        style={{ marginTop: '21px', backgroundColor: '#4b3f00', color: 'white', boxShadow: '0 0 20px black' }}
+                    >
+                        {message}
+                    </p>
                 </div>
             }
 
@@ -237,6 +245,7 @@ export default function tripListPage() {
                 <div className='d-flex flex-column align-items-center' style={{ marginTop: '100px' }}>
                     {trips.map((trip, index) => (
                         <TravelsTripList
+                            icon=<AirplaneTicket style={{width:'80px', minWidth:'60px'}}/>
                             key={index}
                             name={trip['trip name']}
                             code={trip.code}

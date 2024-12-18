@@ -1,4 +1,7 @@
 import React from 'react';
+import World from '@/icons/world.svg'
+import Mail from '@/icons/mail.svg'
+import Whatsapp from '@/icons/whatsapp.svg'
 
 const Footer = () => {
     return (
@@ -11,8 +14,8 @@ const Footer = () => {
                 </div>
 
                 <div className='row col-sm-6'>
-                    <div className='col d-none d-md-flex gap-2'>
-                        <img className='d-none d-sm-block img-fluid w-50 ms-auto' src="/img/world.svg" alt=""/>
+                    <div className='col d-none d-lg-flex gap-2'>
+                        <World/>
                         <div className='d-none d-sm-block bg-white rounded my-auto' style={{width:'1.5%', height:'90%'}}></div>
                     </div>
                     
@@ -20,12 +23,12 @@ const Footer = () => {
                         <h2 className='d-flex justify-content-center justify-content-sm-start text-white fs-1'>Contact Us</h2>
 
                         <div className='d-flex align-items-center flex-column flex-sm-row text-nowrap'>
-                            <img style={{width:'10%'}} src='/img/mail.svg' alt="logo de correo"/>
+                            <Mail style={{width:'40px', minWidth:'40px'}}/>
                             <span className='ms-1 text-white fs-5'>alejo.perezja@gmail.com</span>
                         </div>
                         
                         <div className='d-flex align-items-center flex-column flex-sm-row text-nowrap'>
-                            <img style={{width:'10%'}} src="/img/whatsapp.svg" alt="logo de whatsapp"/>
+                            <Whatsapp style={{width:'40px', minWidth:'40x'}}/>
                             <span className='ms-1 text-white fs-5'>3017619595</span>
                         </div>
                     </div>

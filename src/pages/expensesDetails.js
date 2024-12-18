@@ -4,6 +4,7 @@ import Form from '@/components/form';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import FormatoForm from '@/components/formatoForm';
+import PlusCircle from '@/icons/plusCircle.svg'
 
 const inputsExpenseDetails = [
     {
@@ -185,7 +186,7 @@ export default function ExpensesDetailsPage() {
                                     </div>
                                 ))
                             ) : (
-                                <p className="fs-4 text-white">¡THERE'S NO PARTICIPANTS ON THIS TRIP!</p>
+                                <p className="fs-4 text-white">¡THERE&apos;S NO PARTICIPANTS ON THIS TRIP!</p>
                             )}
                         </FormatoForm>
                     </div>
@@ -193,7 +194,7 @@ export default function ExpensesDetailsPage() {
             )}
 
             <div className="d-flex flex-column mx-auto w-75 rounded-3 p-4 mb-5" style={{ boxShadow: '0 0 20px black' }}>
-                <h1 className="fw-bolder" style={{ color: '#ffd05a' }}>{expenseName || '(EXPENSE NAME)'}</h1>
+                <h1 className="fw-bolder" style={{ color: '#ffd05a' }}>{expenseName}</h1>
 
                 <ol>
                     {expenses.length === 0 ? (
@@ -233,11 +234,10 @@ export default function ExpensesDetailsPage() {
             </div>
 
             <div className="d-flex flex-column justify-content-center align-items-center" style={{ width: '100%', height: '400px' }}>
-                <img
+                <PlusCircle
                     onClick={() => setForm(true)}
-                    className={`${styles.pointer} ${styles.imgExpensesDetails}`}
-                    src="/img/plusCircle.svg"
-                    alt="Añadir un gasto"
+                    className={`${styles.pointer}`}
+                    style={{width:'100px', height:'auto'}}
                 />
                 <p onClick={() => setForm(true)} className={`text-white ${styles.textImgExpensesDetails}`} style={{ cursor: 'pointer' }}>
                     ADD EXPENSE

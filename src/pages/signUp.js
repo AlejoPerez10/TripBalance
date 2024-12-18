@@ -36,7 +36,7 @@ const inputsSignUp = [
   }
 ];
 
-export default function signUpPage() {
+export default function SignUpPage() {
   const router = useRouter();
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');

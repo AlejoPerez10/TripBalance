@@ -18,7 +18,7 @@ const inputsIndex = [
   }
 ];
 
-export default function indexPage() {
+export default function IndexPage() {
   const router = useRouter();
   const [error, setError] = useState('');
 

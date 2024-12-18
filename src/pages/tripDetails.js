@@ -2,8 +2,12 @@ import Head from 'next/head';
 import styles from '@/styles/Home.module.css';
 import FormatoForm from "@/components/formatoForm";
 import { useEffect, useState } from 'react';
+import House from '@/icons/house.svg'
+import Outings from '@/icons/outings.svg'
+import Transport from '@/icons/transport.svg'
+import Link from 'next/link'
 
-export default function tripDetailsPage() {
+export default function TripDetailsPage() {
     const [trip, setTrip] = useState(null);
     const [organizerName, setOrganizerName] = useState('');
     const [participantNames, setParticipantNames] = useState([]);
@@ -45,37 +49,37 @@ export default function tripDetailsPage() {
             />
 
             <div className='d-flex flex-column mx-auto w-75 rounded-3 p-4 mb-5' style={{ boxShadow: '0 0 20px black' }}>
-                <h2 className='mb-2' style={{ color: '#ffd05a', fontSize: '35px', fontWeight: 'bolder' }}>EXPENSES</h2>
+                <h2 className='mb-2 fs-1' style={{ color: '#ffd05a', fontWeight: 'bolder' }}>EXPENSES</h2>
 
                 <div className={`d-flex gap-5 justify-content-center align-items-center mt-4 mb-2 ${styles.expensesTripDetails}`}>
-                    <a href={`/expensesDetails?expense=RENT`}
+                    <Link href={`/expensesDetails?expense=RENT`}
                         className={`btn btn-primary border-0 d-flex justify-content-center align-items-center gap-3 ${styles.laserButton} ${styles.activeButtonsNav} ${styles.aExpensesTripDetails}`}
                         style={{ height: '60px', backgroundColor: '#3c3c3c', boxShadow: '0 0 20px black' }}
                     >
-                        <img src="/img/house.svg" alt="logo de casa" />
+                        <House style={{width:'50px', minWidth: '40px'}}/>
                         <p className='mb-0 fs-1'>RENT</p>
-                    </a>
+                    </Link>
 
-                    <a href={`/expensesDetails?expense=OUTINGS`}
+                    <Link href={`/expensesDetails?expense=OUTINGS`}
                         className={`btn btn-primary border-0 d-flex justify-content-center align-items-center gap-3 ${styles.laserButton} ${styles.activeButtonsNav} ${styles.aExpensesTripDetails}`}
                         style={{ height: '60px', backgroundColor: '#3c3c3c', boxShadow: '0 0 20px black' }}
                     >
-                        <img src="/img/outings.svg" alt="logo de casa" />
+                        <Outings style={{width:'50px', minWidth: '40px'}}/>
                         <p className='mb-0 fs-1'>OUTINGS</p>
-                    </a>
+                    </Link>
 
-                    <a href={`/expensesDetails?expense=TRANSPORT`}
+                    <Link href={`/expensesDetails?expense=TRANSPORT`}
                         className={`btn btn-primary border-0 d-flex justify-content-center align-items-center gap-3 ${styles.laserButton} ${styles.activeButtonsNav} ${styles.aExpensesTripDetails}`}
                         style={{ height: '60px', backgroundColor: '#3c3c3c', boxShadow: '0 0 20px black' }}
                     >
-                        <img src="/img/transport.svg" alt="logo de casa" />
+                        <Transport style={{width:'50px', minWidth: '40px'}}/>
                         <p className='mb-0 fs-1'>TRANSPORT</p>
-                    </a>
+                    </Link>
                 </div>
             </div>
 
             <FormatoForm
-                className='w-75'
+                className='w-75 '
                 title='PARTICIPANTS'
                 text={
                     trip

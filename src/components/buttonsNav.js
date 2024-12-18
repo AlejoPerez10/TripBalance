@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '@/styles/Home.module.css'
 
-const ButtonsNav = ({ name, src, alt, altura, onClick }) => {
+const ButtonsNav = ({ name, icon, altura, onClick }) => {
     return (
         <button 
             type="button"
@@ -9,7 +9,7 @@ const ButtonsNav = ({ name, src, alt, altura, onClick }) => {
             style={{ height: altura, backgroundColor: '#3c3c3c', boxShadow: '0 0 20px black' }}
             onClick={onClick}
         >
-            <img className='img-fluid' style={{ width:'20%' }} src={src} alt={alt} />
+            {icon}
             <div className="fs-1">{name}</div>
         </button>
 

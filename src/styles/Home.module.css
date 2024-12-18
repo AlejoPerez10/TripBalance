@@ -141,7 +141,20 @@
 
 @media (max-width: 991px){
   .tripsResponsive{
+    flex-direction: row;
     width: 80%;
+  }
+}
+
+@media (max-width: 485px){
+  .tripsResponsive{
+    flex-wrap: nowrap;
+    flex-direction: column;
+    width: 80%;
+  }
+
+  .tripsResponsive *{
+    margin: 0 !important
   }
 }
 
