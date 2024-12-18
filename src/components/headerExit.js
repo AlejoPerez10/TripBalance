@@ -1,5 +1,5 @@
 import React from 'react'
-import Logout from'@/icons/logout.svg'
+import Logout from'@/icons/logOut.svg'
 import Link from 'next/link'
 
 const HeaderExit = () => {
