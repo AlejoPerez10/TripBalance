@@ -83,9 +83,6 @@ export default function SignUpPage() {
     <>
       <div className='d-flex flex-column min-vh-100'>
         <div className='flex-fill'>
-          <Head>
-            <title>Sign Up</title>
-          </Head>
 
           <Form
             title='Sign Up'

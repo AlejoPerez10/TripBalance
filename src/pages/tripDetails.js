@@ -38,9 +38,6 @@ export default function TripDetailsPage() {
 
     return (
         <>
-            <Head>
-                <title>Trip Details</title>
-            </Head>
 
             <FormatoForm
                 className='w-75'

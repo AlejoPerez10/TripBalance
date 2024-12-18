@@ -220,9 +220,6 @@ export default function TripListPage() {
 
     return (
         <>
-            <Head>
-                <title>Trip List</title>
-            </Head>
 
             <div className="container-fluid d-flex flex-column flex-sm-row justify-content-center align-items-center gap-4">
                 <ButtonsNav name='My Trips' icon=<Agend style={{width:'80px'}}/> onClick={() => handleButtonClick('myTrips')} />

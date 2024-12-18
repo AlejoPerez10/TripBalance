@@ -41,9 +41,6 @@ export default function IndexPage() {
       <div className='d-flex flex-column'>
         
         <div className='flex-fill'>
-          <Head>
-            <title>Login</title>
-          </Head>
 
           <Form
             title='Login'

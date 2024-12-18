@@ -16,7 +16,7 @@ export default function Document() {
         <meta property="og:url" content="https://www.tusitio.com" />*/}
 
         {/* Favicon */}
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
         {/* Fuentes externas (si usas Google Fonts u otras) */}
         <link
@@ -26,6 +26,8 @@ export default function Document() {
 
         {/* Metaetiqueta para viewport (para dispositivos móviles) */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>TripBalance</title>
       </Head>
       <body>
         <Main />

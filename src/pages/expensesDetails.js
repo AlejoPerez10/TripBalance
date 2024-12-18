@@ -159,9 +159,6 @@ export default function ExpensesDetailsPage() {
 
     return (
         <>
-            <Head>
-                <title>Expenses Details</title>
-            </Head>
 
             {details && selectedExpense && (
                 <article
