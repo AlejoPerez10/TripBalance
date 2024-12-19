@@ -131,33 +131,6 @@
   }
 }
 
-.tripsResponsive{
-  width: 50%
-}
-
-.tripsResponsive:hover{
-  color:#ffd05a;
-}
-
-@media (max-width: 991px){
-  .tripsResponsive{
-    flex-direction: row;
-    width: 80%;
-  }
-}
-
-@media (max-width: 485px){
-  .tripsResponsive{
-    flex-wrap: nowrap;
-    flex-direction: column;
-    width: 80%;
-  }
-
-  .tripsResponsive *{
-    margin: 0 !important
-  }
-}
-
 .buttonsExpenseDetails{
   padding: 1% 10%;
   font-size: 100%;
@@ -192,9 +165,78 @@
   }
 }
 
-@media (min-width: 575px){
+.iconsButtonsNavTripList{
+  width: 30px;
+}
+
+.iconsTravelsTripList{
+  width: 50px;
+  min-width: 40px;
+}
+
+.textTravelsTripListResponsive{
+  font-size: 18px;
+}
+
+.tripsResponsive{
+  display: flex;
+  flex-direction: column;
+  padding: 5px 45px;
+  gap: 10px;
+}
+
+.tripsResponsive:hover{
+  color: #ffd05a;
+}
+
+.tripsResponsive div{
+  margin-left:0 !important;
+}
+
+@media (min-width: 280px) {
+  .tripsResponsive{
+    flex-direction: row;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 15px;
+  }
+}
+
+@media (min-width: 576px){
   .logoFooter{
     width: 30% !important;
+  }
+
+  .textButtonsNavResponsive{
+    font-size: 25px !important;
+  }
+
+  .iconsButtonsNavTripList{
+    width: 80px
+  }
+
+  .iconsTravelsTripList{
+    width: 70px;
+  }
+
+  .textTravelsTripListResponsive{
+    font-size: 25px;
+  }
+
+}
+
+@media (min-width: 768px){
+  .textButtonsNavResponsive{
+    font-size: 35px !important;
+  }
+
+  .iconsTravelsTripList{
+    width: 80px;
+  }
+
+  .textTravelsTripListResponsive{
+    font-size: 35px
   }
 }
 

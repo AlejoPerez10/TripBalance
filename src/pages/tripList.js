@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import ButtonsNav from "@/components/buttonsNav";
 import CenterText from "@/components/centerText";
 import TravelsTripList from "@/components/travelsTripList";
@@ -8,6 +7,7 @@ import Agend from '@/icons/agend.svg'
 import NewTrip from '@/icons/newTrip.svg'
 import JoinTrip from '@/icons/joinTrip.svg'
 import AirplaneTicket from '@/icons/airplaneTicket.svg'
+import styles from '@/styles/Home.module.css'
 
 const inputsNewTrip = [
     {
@@ -221,10 +221,10 @@ export default function TripListPage() {
     return (
         <>
 
-            <div className="container-fluid d-flex flex-column flex-sm-row justify-content-center align-items-center gap-4">
-                <ButtonsNav name='My Trips' icon=<Agend style={{width:'80px'}}/> onClick={() => handleButtonClick('myTrips')} />
-                <ButtonsNav name='New Trip' icon=<NewTrip style={{width:'80px'}}/> onClick={() => handleButtonClick('newTrip')} />
-                <ButtonsNav name='Join Trip' icon=<JoinTrip style={{width:'80px'}}/> onClick={() => handleButtonClick('joinTrip')} />
+            <div className="container-fluid d-flex justify-content-center align-items-center gap-4">
+                <ButtonsNav name='My Trips' icon=<Agend className={`${styles.iconsButtonsNavTripList}`}/> onClick={() => handleButtonClick('myTrips')} />
+                <ButtonsNav name='New Trip' icon=<NewTrip className={`${styles.iconsButtonsNavTripList}`}/> onClick={() => handleButtonClick('newTrip')} />
+                <ButtonsNav name='Join Trip' icon=<JoinTrip className={`${styles.iconsButtonsNavTripList}`}/> onClick={() => handleButtonClick('joinTrip')} />
             </div>
 
             {message &&
@@ -242,7 +242,7 @@ export default function TripListPage() {
                 <div className='d-flex flex-column align-items-center' style={{ marginTop: '100px' }}>
                     {trips.map((trip, index) => (
                         <TravelsTripList
-                            icon=<AirplaneTicket style={{width:'80px', minWidth:'60px'}}/>
+                            icon=<AirplaneTicket className={`${styles.iconsTravelsTripList}`}/>
                             key={index}
                             name={trip['trip name']}
                             code={trip.code}
