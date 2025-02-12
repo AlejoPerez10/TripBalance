@@ -1,10 +1,11 @@
-import Head from 'next/head';
 import styles from '@/styles/Home.module.css';
 import Form from '@/components/form';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import FormatoForm from '@/components/formatoForm';
-import PlusCircle from '@/icons/plusCircle.svg'
+import PlusCircle from '@/icons/plusCircle.svg';
+import { IconChevronLeftPipe } from '@tabler/icons-react';
+import Link from 'next/link';
 
 const inputsExpenseDetails = [
     {
@@ -159,6 +160,9 @@ export default function ExpensesDetailsPage() {
 
     return (
         <>
+            <Link href="/tripDetails">
+                <IconChevronLeftPipe color='#ffd05a' className='position-absolute' style={{width:'5%', height:'10%', top:'5%', left:'2%'}}/>
+            </Link>
 
             {details && selectedExpense && (
                 <article
@@ -254,7 +258,7 @@ export default function ExpensesDetailsPage() {
                             inputs={dynamicInputsExpenseDetails}
                             btn="ADD EXPENSE"
                             onSubmit={handleNewExpense}
-                            footer={{ text: '¡ Add a new expense !' }}
+                            footer={{ text: '¡ Add a new expense !', linkHref: '/' }}
                         />
                     </div>
                 </article>

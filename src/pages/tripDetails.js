@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import styles from '@/styles/Home.module.css';
 import FormatoForm from "@/components/formatoForm";
 import { useEffect, useState } from 'react';

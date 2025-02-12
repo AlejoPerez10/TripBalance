@@ -1,9 +1,10 @@
 import React from 'react';
+import Image from 'next/image'
 
 const Header = () => {
     return (
         <header className='container text-center my-5'>
-            <img src="/img/Logotipo.png" alt="Logo de TripBalance" id="logotipo" className='img-fluid w-50' />
+            <Image width={640} height={108} priority src="/img/Logotipo.webp" alt="Logo de TripBalance" id="logotipo" className='img-fluid w-50' />
         </header>
     );
 };

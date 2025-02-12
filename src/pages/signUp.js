@@ -1,7 +1,8 @@
-import Head from 'next/head';
 import Form from '@/components/form';
 import { useRouter } from 'next/router';
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
+import Link from 'next/link';
+import { IconChevronLeftPipe } from '@tabler/icons-react';
 
 const inputsSignUp = [
   {
@@ -41,12 +42,6 @@ export default function SignUpPage() {
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
 
-  useEffect(() => {
-    if (error || message) {
-      window.scrollTo(0, document.body.scrollHeight);
-    }
-  }, [error, message]);
-
   const handleSignUpSubmit = (signUpData) => {
     const { email, password, 'confirm password': confirmPassword, name, 'last name': lastName } = signUpData;
 
@@ -76,29 +71,30 @@ export default function SignUpPage() {
     setTimeout(() => {
       setMessage('');
       router.push('/'); // Redirige al login después del registro
-    }, 1000);
+    }, 2000);
   };
 
   return (
     <>
-      <div className='d-flex flex-column min-vh-100'>
+
+      <Link href="/">
+        <IconChevronLeftPipe size='80' color='#ffd05a' className='position-absolute' style={{top:'8%', left:'2%'}}/>
+      </Link>
+
+      <div className='d-flex flex-column min-vh-100 position-relative'>
         <div className='flex-fill'>
 
           <Form
             title='Sign Up'
             inputs={inputsSignUp}
             btn='SUBMIT'
-            footer={{ text: "¡ Create an account !" }}
+            footer={{ text: "¡ Create an account !", linkHref: '/' }}
             onSubmit={handleSignUpSubmit}
           />
 
-          <div className='w-100 d-flex justify-content-center'>
-            {error && <p className="position-absolute w-50 text-center alert alert-danger">{error}</p>}
-          </div>
+          {error && <p className="position-absolute text-center alert alert-danger" style={{width:'35%', marginTop:'5px', top:'1%', right:'28.5%'}}>{error}</p>}
           
-          <div className='w-100 d-flex justify-content-center'>
-            {message && <p className="position-absolute w-50 text-center alert alert-success">{message}</p>}
-          </div>
+          {message && <p className="position-absolute text-center alert alert-success" style={{width:'35%', marginTop:'5px', top:'1%', right:'28.5%'}}>{message}</p>}
 
         </div>
 

@@ -1,7 +1,7 @@
-import Head from 'next/head';
 import Form from '@/components/form';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+import styles from '@/styles/Home.module.css'
 
 const inputsIndex = [
   {
@@ -38,7 +38,7 @@ export default function IndexPage() {
 
   return (
     <>
-      <div className='d-flex flex-column'>
+      <div className='d-flex flex-column position-relative'>
         
         <div className='flex-fill'>
 
@@ -55,9 +55,7 @@ export default function IndexPage() {
           />
         </div>
 
-        <div className='w-100 d-flex justify-content-center'>
-          {error && <p className="position-absolute w-50 text-center alert alert-danger">{error}</p>}
-        </div>
+        {error && <p className={`position-absolute text-center alert alert-danger ${styles.messages}`} style={{width:'40%', marginTop:'5px', top:'1%', right:'20%'}}>{error}</p>}
 
       </div>
     </>

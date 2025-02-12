@@ -1,12 +1,10 @@
 import ButtonsNav from "@/components/buttonsNav";
-import CenterText from "@/components/centerText";
 import TravelsTripList from "@/components/travelsTripList";
 import Form from '@/components/form';
 import React, { useState, useEffect } from 'react';
 import Agend from '@/icons/agend.svg'
 import NewTrip from '@/icons/newTrip.svg'
 import JoinTrip from '@/icons/joinTrip.svg'
-import AirplaneTicket from '@/icons/airplaneTicket.svg'
 import styles from '@/styles/Home.module.css'
 
 const inputsNewTrip = [
@@ -76,15 +74,17 @@ export default function TripListPage() {
         setSelectedCurrency(e.target.value);
     };
 
+    //Manejo New Trip
     const handleNewTripSubmit = (tripData) => {
+        
         if (usuario) {
             const friendEmail = tripData['add friend']?.trim();
             const tripCode = codigoRandom(); // Generar un código único para el viaje
-    
+
             if (friendEmail) {
                 let friendExists = false;
                 let friendUser = null;
-    
+
                 // Comprobar si el amigo existe en el localStorage
                 Object.keys(localStorage).forEach((key) => {
                     const storedUser = JSON.parse(localStorage.getItem(key));
@@ -93,13 +93,15 @@ export default function TripListPage() {
                         friendUser = storedUser;
                     }
                 });
-    
+
+                //Si el correo del amigo no existe
                 if (!friendExists) {
                     setMessage('Email not found');
                     setTimeout(() => setMessage(''), 3000);
                     return;
                 }
-    
+
+                //Si el correo del amigo existe
                 if (friendUser) {
                     const newTripForFriend = {
                         ...tripData,
@@ -108,13 +110,14 @@ export default function TripListPage() {
                         Invitados: [friendEmail],
                         Gastos: { RENT: [], OUTINGS: [], TRANSPORT: [] }
                     };
-    
+
                     // Agregar el viaje a la cuenta del amigo
                     friendUser.Trips = [...friendUser.Trips, newTripForFriend];
                     localStorage.setItem(friendEmail, JSON.stringify(friendUser));
                 }
             }
-    
+
+
             const newTrip = {
                 ...tripData,
                 code: tripCode, // Usar el mismo código para el creador
@@ -122,14 +125,14 @@ export default function TripListPage() {
                 Invitados: friendEmail ? [friendEmail] : [],
                 Gastos: { RENT: [], OUTINGS: [], TRANSPORT: [] }
             };
-    
+
             // Actualizar la lista de viajes del creador
             const updatedTrips = [...trips, newTrip];
             setTrips(updatedTrips);
-    
+
             usuario.Trips = updatedTrips;
             localStorage.setItem('currentUser', JSON.stringify(usuario));
-    
+
             // Actualizar la cuenta del creador en el localStorage global
             Object.keys(localStorage).forEach((key) => {
                 const storedUser = JSON.parse(localStorage.getItem(key));
@@ -138,12 +141,18 @@ export default function TripListPage() {
                     localStorage.setItem(key, JSON.stringify(storedUser));
                 }
             });
-    
+
             setMessage('TRIP CREATED SUCCESSFULLY');
-            setTimeout(() => setMessage(''), 3000);
+
+            setTimeout(() => {
+                setMessage('')
+                setActiveComponent('myTrips')
+            }, 1000);
+            
         }
     };
 
+    //Manejo Join Trip
     const handleJoinTrip = (tripData) => {
         const codeToJoin = tripData['trip code'].toLowerCase();
         let found = false;
@@ -208,7 +217,37 @@ export default function TripListPage() {
             }
         }
     
-        setTimeout(() => setMessage(''), 3000);
+        setTimeout(() => {
+            setMessage('')
+            setActiveComponent('myTrips')
+        }, 1000);
+    };
+
+    //Eliminar viajes
+    const handleDeleteTrip = (tripCode) => {
+        const confirmDelete = window.confirm("Are you sure you want to delete this trip?");
+        if (!confirmDelete) return;
+    
+        if (usuario) {
+            // Filtrar los viajes del usuario y eliminar el seleccionado
+            const updatedTrips = trips.filter(trip => trip.code !== tripCode);
+            setTrips(updatedTrips);
+    
+            usuario.Trips = updatedTrips;
+            localStorage.setItem('currentUser', JSON.stringify(usuario));
+    
+            // Eliminar el viaje de los invitados y del organizador
+            Object.keys(localStorage).forEach((key) => {
+                const storedUser = JSON.parse(localStorage.getItem(key));
+                if (storedUser && storedUser.Trips) {
+                    storedUser.Trips = storedUser.Trips.filter(trip => trip.code !== tripCode);
+                    localStorage.setItem(key, JSON.stringify(storedUser));
+                }
+            });
+    
+            setMessage('TRIP DELETED SUCCESSFULLY');
+            setTimeout(() => setMessage(''), 2000);
+        }
     };
 
     const handleDetailsClick = (trip) => {
@@ -222,9 +261,21 @@ export default function TripListPage() {
         <>
 
             <div className="container-fluid d-flex justify-content-center align-items-center gap-4">
-                <ButtonsNav name='My Trips' icon=<Agend className={`${styles.iconsButtonsNavTripList}`}/> onClick={() => handleButtonClick('myTrips')} />
-                <ButtonsNav name='New Trip' icon=<NewTrip className={`${styles.iconsButtonsNavTripList}`}/> onClick={() => handleButtonClick('newTrip')} />
-                <ButtonsNav name='Join Trip' icon=<JoinTrip className={`${styles.iconsButtonsNavTripList}`}/> onClick={() => handleButtonClick('joinTrip')} />
+                <ButtonsNav name='My Trips' 
+                    icon=<Agend 
+                    className={`${styles.iconsButtonsNavTripList}`}/> 
+                    onClick={() => handleButtonClick('myTrips')} 
+                />
+                <ButtonsNav name='New Trip' 
+                    icon=<NewTrip 
+                    className={`${styles.iconsButtonsNavTripList}`}/> 
+                    onClick={() => handleButtonClick('newTrip')} 
+                />
+                <ButtonsNav name='Join Trip' 
+                    icon=<JoinTrip 
+                    className={`${styles.iconsButtonsNavTripList}`}/> 
+                    onClick={() => handleButtonClick('joinTrip')} 
+                />
             </div>
 
             {message &&
@@ -237,28 +288,52 @@ export default function TripListPage() {
                 </div>
             }
 
-            {(activeComponent === 'myTrips') && trips.length === 0 && <CenterText text="CREATE OR JOIN A TRIP" />}
-            {(activeComponent === 'myTrips') && trips.length > 0 && (
-                <div className='d-flex flex-column align-items-center' style={{ marginTop: '100px' }}>
+            {(activeComponent === 'myTrips') && trips.length === 0 && 
+                <div
+                    className={`${styles.hidden} ${styles.centerText} hidden d-flex justify-content-center align-items-center`}
+                    style={{color:'#ffd05a', width:'100%', height:'200px', fontWeight:'bolder', marginTop:'200px'}}
+                >
+                    CREATE OR JOIN A TRIP
+                </div>
+            }
+
+            {(activeComponent === 'myTrips') && trips.length < 3 && trips.length > 0 && (
+                <div className='d-flex flex-column align-items-center' style={{ marginTop: '100px', height:'300px' }}>
                     {trips.map((trip, index) => (
                         <TravelsTripList
-                            icon=<AirplaneTicket className={`${styles.iconsTravelsTripList}`}/>
                             key={index}
                             name={trip['trip name']}
                             code={trip.code}
                             onClick={() => handleDetailsClick(trip)}
+                            onDelete={() => handleDeleteTrip(trip.code)}
                         />
                     ))}
                 </div>
             )}
 
+            {(activeComponent === 'myTrips') && trips.length >= 3 && (
+                <div className='d-flex flex-column align-items-center' style={{ marginTop: '100px' }}>
+                    {trips.map((trip, index) => (
+                        <TravelsTripList
+                            key={index}
+                            name={trip['trip name']}
+                            code={trip.code}
+                            onClick={() => handleDetailsClick(trip)}
+                            onDelete={handleDeleteTrip}
+                        />
+                    ))}
+                </div>
+            )}
+
+            {/*Renderizo New Trip*/}
             {(activeComponent === 'newTrip') && (
                 <div style={{ marginTop: '100px' }}>
                     <Form
+                        id='formNewTrip'
                         title="Create a New Trip"
                         inputs={inputsNewTrip}
                         btn="SUBMIT"
-                        footer={{ text: "¡Trips are limited to 20 participants!" }}
+                        footer={{ text: "¡Trips are limited to 20 participants!", linkHref: '/' }}
                         onSubmit={handleNewTripSubmit}
                         value={selectedCurrency}
                         onChange={handleCurrencyChange}
@@ -274,7 +349,7 @@ export default function TripListPage() {
                         title='Join a Trip'
                         inputs={inputsJoinATrip}
                         btn='JOIN'
-                        footer={{ text: "¡Join a friend's trips!" }}
+                        footer={{ text: "¡Join a friend's trips!", linkHref: '/' }}
                         onSubmit={handleJoinTrip}
                     />
                 </div>
