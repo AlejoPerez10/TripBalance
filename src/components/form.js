@@ -48,7 +48,7 @@ const Form = ({ title, inputs, btn, footer, onSubmit, onClick, className }) => {
             ))}
             <button
                 type="submit"
-                className={`d-flex m-auto border-0 rounded-3 fs-3 ${styles.laserButton}`}
+                className={`d-flex position-relative m-auto border-0 rounded-3 fs-3 ${styles.laserButton}`}
                 style={{ padding: '1% 10%', backgroundColor: '#333', color: '#ffd05a'}}
                 onClick={onClick}
             >
