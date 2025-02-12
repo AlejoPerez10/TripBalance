@@ -1,6 +1,7 @@
 import Form from '@/components/form';
 import { useRouter } from 'next/router';
 import React, { useState} from 'react';
+import styles from '@/styles/Home.module.css'
 import Link from 'next/link';
 import { IconChevronLeftPipe } from '@tabler/icons-react';
 
@@ -78,7 +79,7 @@ export default function SignUpPage() {
     <>
 
       <Link href="/">
-        <IconChevronLeftPipe size='80' color='#ffd05a' className='position-absolute' style={{top:'8%', left:'2%'}}/>
+        <IconChevronLeftPipe color='#ffd05a' className={`position-absolute ${styles.leftArrow}`}/>
       </Link>
 
       <div className='d-flex flex-column min-vh-100 position-relative'>

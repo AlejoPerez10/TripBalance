@@ -7,7 +7,7 @@ const TravelsTripList = ({ name, code, onClick, onDelete }) => {
 
     return (
         <div
-            className={`btn btn-primary border-0 d-flex align-items-center mt-4 h-auto ${styles.tripsResponsive} ${styles.laserButton}`}
+            className={`btn btn-primary position-relative border-0 d-flex align-items-center mt-4 h-auto ${styles.tripsResponsive} ${styles.laserButton}`}
             style={{backgroundColor:'#3c3c3c', boxShadow:'0 0 20px black', cursor:'pointer'}}
             onClick={onClick}
         >

@@ -49,7 +49,7 @@ export default function TripDetailsPage() {
 
                 <div className={`d-flex gap-5 justify-content-center align-items-center mt-4 mb-2 ${styles.expensesTripDetails}`}>
                     <Link href={`/expensesDetails?expense=RENT`}
-                        className={`btn btn-primary border-0 d-flex justify-content-center align-items-center gap-3 ${styles.laserButton} ${styles.activeButtonsNav} ${styles.aExpensesTripDetails}`}
+                        className={`btn btn-primary position-relative border-0 d-flex justify-content-center align-items-center gap-3 ${styles.laserButton} ${styles.activeButtonsNav} ${styles.aExpensesTripDetails}`}
                         style={{ height: '60px', backgroundColor: '#3c3c3c', boxShadow: '0 0 20px black' }}
                     >
                         <House style={{width:'50px', minWidth: '40px'}}/>
@@ -57,7 +57,7 @@ export default function TripDetailsPage() {
                     </Link>
 
                     <Link href={`/expensesDetails?expense=OUTINGS`}
-                        className={`btn btn-primary border-0 d-flex justify-content-center align-items-center gap-3 ${styles.laserButton} ${styles.activeButtonsNav} ${styles.aExpensesTripDetails}`}
+                        className={`btn btn-primary position-relative border-0 d-flex justify-content-center align-items-center gap-3 ${styles.laserButton} ${styles.activeButtonsNav} ${styles.aExpensesTripDetails}`}
                         style={{ height: '60px', backgroundColor: '#3c3c3c', boxShadow: '0 0 20px black' }}
                     >
                         <Outings style={{width:'50px', minWidth: '40px'}}/>
@@ -65,7 +65,7 @@ export default function TripDetailsPage() {
                     </Link>
 
                     <Link href={`/expensesDetails?expense=TRANSPORT`}
-                        className={`btn btn-primary border-0 d-flex justify-content-center align-items-center gap-3 ${styles.laserButton} ${styles.activeButtonsNav} ${styles.aExpensesTripDetails}`}
+                        className={`btn btn-primary position-relative border-0 d-flex justify-content-center align-items-center gap-3 ${styles.laserButton} ${styles.activeButtonsNav} ${styles.aExpensesTripDetails}`}
                         style={{ height: '60px', backgroundColor: '#3c3c3c', boxShadow: '0 0 20px black' }}
                     >
                         <Transport style={{width:'50px', minWidth: '40px'}}/>

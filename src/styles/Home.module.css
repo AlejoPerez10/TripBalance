@@ -18,7 +18,7 @@
 .laserButton::before,
 .laserButton::after {
   content: '';
-  position: absolute;
+  position: absolute !important;
   height: 2px;
   width: 0;
   background-color: #ffd05a;
@@ -201,6 +201,24 @@
   margin-left:0 !important;
 }
 
+.trashCan {
+  height: 20px !important;
+  transition: transform 200ms ease-in-out, stroke 200ms ease-in-out;
+}
+
+.trashCan:hover {
+  stroke: #ff3d3d;
+  transform: scale(1.2);
+}
+
+.leftArrow{
+  width: 10%;
+  height: 10%;
+  left: 10%;
+  top: 4%;
+}
+
+/*Responsive para pequeñas*/
 @media (min-width: 375px) {
   .tripsResponsive{
     flex-direction: row;
@@ -215,25 +233,18 @@
   }
 }
 
-
-.trashCan {
-  height: 20px !important;
-  transition: transform 200ms ease-in-out, stroke 200ms ease-in-out;
-}
-
-.trashCan:hover {
-  stroke: #ff3d3d;
-  transform: scale(1.2);
-}
-
 /*Responsive para móviles*/
 @media (min-width: 480px){
-
+  .leftArrow{
+    width: 10%;
+    height: 10%;
+    left: 10%;
+    top: 5%;
+  }
 }
 
 /*Responsive para tablets*/
 @media (min-width: 768px){
-
   .messages{
     right: 29.5% !important;
     width: 30% !important;
@@ -266,6 +277,13 @@
 
   .trashCan{
     height: 30px !important;
+  }
+
+  .leftArrow{
+    width: 8%;
+    height: 8%;
+    left: 6%;
+    top: 8%;
   }
 
   /*Revisar*/
@@ -317,6 +335,13 @@
   .trashCan{
     height: 40px !important;
     width: 35px !important;
+  }
+
+  .leftArrow{
+    width: 10%;
+    height: 10%;
+    left: 6%;
+    top: 8%;
   }
 
 }
